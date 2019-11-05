@@ -191,19 +191,19 @@
         </a>
         
         <a  class=""
-           href="/2019/06/22/Myself/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="Myself">Myself</span>
-            <span class="post-date" title="2019-06-22 10:41:17">2019/06/22</span>
-        </a>
-        
-        <a  class=""
            href="/2019/10/18/Dockfile-Knowledge/"
            data-tag="Dock-File"
            data-author="" >
             <span class="post-title" title="Dockfile Knowledge">Dockfile Knowledge</span>
             <span class="post-date" title="2019-10-18 10:23:14">2019/10/18</span>
+        </a>
+        
+        <a  class=""
+           href="/2019/06/22/Myself/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Myself">Myself</span>
+            <span class="post-date" title="2019-06-22 10:41:17">2019/06/22</span>
         </a>
         
         <a  class=""
@@ -388,9 +388,7 @@ $  sudo apt-get -y install cuda</code></pre>
 
     </div>
     <div class="copyright">
-        <p class="footer-entry">©2017 Allen Ning</p>
-<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
-
+        
     </div>
     <div class="full-toc">
         <button class="full"><span class="min "></span></button>
@@ -424,245 +422,5 @@ $  sudo apt-get -y install cuda</code></pre>
 
 
 </body>
-<script src="/js/jquery.pjax.js?v=1.0.1" ></script>
-
-<script src="/js/script.js?v=1.0.1" ></script>
-<script>
-    var img_resize = 'default';
-    /*作者、标签的自动补全*/
-    $(function () {
-        $('.search').AutoComplete({
-            'data': ['#Linux','#Dock-File','#气象数据预处理',],
-            'itemHeight': 20,
-            'width': 418
-        }).AutoComplete('show');
-    })
-    function initArticle() {
-        /*渲染对应的表格样式*/
-        
-            $(".post .pjax table").addClass("green_title");
-        
-
-        /*渲染打赏样式*/
-        
-        $("input[name=pay]").on("click", function () {
-            if($("input[name=pay]:checked").val()=="weixin"){
-                $(".shang_box .shang_payimg .pay_img").addClass("weixin_img");
-            } else {
-                $(".shang_box .shang_payimg .pay_img").removeClass("weixin_img");
-            }
-        })
-        
-
-        /*高亮代码块行号*/
-        
-        $('pre code').each(function(){
-            var lines = $(this).text().split('\n').length - 1, widther='';
-            if (lines>99) {
-                widther = 'widther'
-            }
-            var $numbering = $('<ul/>').addClass('pre-numbering ' + widther).attr("unselectable","on");
-            $(this).addClass('has-numbering ' + widther)
-                    .parent()
-                    .append($numbering);
-            for(var i=1;i<=lines;i++){
-                $numbering.append($('<li/>').text(i));
-            }
-        });
-        
-
-        /*访问数量*/
-        
-        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
-        
-
-        /*代码高亮，行号对齐*/
-        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
-
-        
-    }
-
-    /*打赏页面隐藏与展示*/
-    
-    function dashangToggle() {
-        $(".shang_box").fadeToggle();
-        $(".hide_box").fadeToggle();
-    }
-    
-
-</script>
-
-<!--加入行号的高亮代码块样式-->
-
-<style>
-    pre{
-        position: relative;
-        margin-bottom: 24px;
-        border-radius: 10px;
-        border: 1px solid #e2dede;
-        background: #FFF;
-        overflow: hidden;
-    }
-    code.has-numbering{
-        margin-left: 30px;
-    }
-    code.has-numbering.widther{
-        margin-left: 35px;
-    }
-    .pre-numbering{
-        margin: 0px;
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 20px;
-        padding: 0.5em 3px 0.7em 5px;
-        border-right: 1px solid #C3CCD0;
-        text-align: right;
-        color: #AAA;
-        background-color: #fafafa;
-    }
-    .pre-numbering.widther {
-        width: 35px;
-    }
-</style>
-
-<!--自定义样式设置-->
-<style>
-    
-    
-    .nav {
-        width: 542px;
-    }
-    .nav.fullscreen {
-        margin-left: -542px;
-    }
-    .nav-left {
-        width: 120px;
-    }
-    
-    
-    @media screen and (max-width: 1468px) {
-        .nav {
-            width: 492px;
-        }
-        .nav.fullscreen {
-            margin-left: -492px;
-        }
-        .nav-left {
-            width: 100px;
-        }
-    }
-    
-    
-    @media screen and (max-width: 1024px) {
-        .nav {
-            width: 492px;
-            margin-left: -492px
-        }
-        .nav.fullscreen {
-            margin-left: 0;
-        }
-        .nav .hide-list.fullscreen {
-            left: 492px
-        }
-    }
-    
-    @media screen and (max-width: 426px) {
-        .nav {
-            width: 100%;
-        }
-        .nav-left {
-            width: 100%;
-        }
-    }
-    
-    
-    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
-        color: #383636;
-    }
-    
-    
-    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
-        color: #5e5e5f;
-    }
-    
-    
-    .nav-right nav a.hover, #local-search-result a.hover{
-        background-color: #e2e0e0;
-    }
-    
-    
-
-    /*列表样式*/
-    
-    .post .pjax article .article-entry>ol, .post .pjax article .article-entry>ul, .post .pjax article>ol, .post .pjax article>ul{
-        border: #e2dede solid 1px;
-        border-radius: 10px;
-        padding: 10px 32px 10px 56px;
-    }
-    .post .pjax article .article-entry li>ol, .post .pjax article .article-entry li>ul,.post .pjax article li>ol, .post .pjax article li>ul{
-        padding-top: 5px;
-        padding-bottom: 5px;
-    }
-    .post .pjax article .article-entry>ol>li, .post .pjax article .article-entry>ul>li,.post .pjax article>ol>li, .post .pjax article>ul>li{
-        margin-bottom: auto;
-        margin-left: auto;
-    }
-    .post .pjax article .article-entry li>ol>li, .post .pjax article .article-entry li>ul>li,.post .pjax article li>ol>li, .post .pjax article li>ul>li{
-        margin-bottom: auto;
-        margin-left: auto;
-    }
-    
-
-    /* 背景图样式 */
-    
-    
-
-
-    /*引用块样式*/
-    
-
-    /*文章列表背景图*/
-    
-    .nav-right:before {
-        content: ' ';
-        display: block;
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        opacity: 0.3;
-        background: url("https://i.loli.net/2019/07/22/5d3521411f3f169375.png");
-        background-repeat: no-repeat;
-        background-position: 50% 0;
-        -ms-background-size: cover;
-        -o-background-size: cover;
-        -moz-background-size: cover;
-        -webkit-background-size: cover;
-        background-size: cover;
-    }
-    
-
-    
-</style>
-
-
-
-
-
-
-<div class="mobile-menus-out" >
-
-</div>
-<div class="mobile-menus">
-    
-    
-    
-    
-    <a class="dynamic-menu " target="_blank"  href="https://github.com/ningshuliang">github</a>
-    
-</div>
-
 
 </html>
