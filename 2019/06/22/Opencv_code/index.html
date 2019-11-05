@@ -6,18 +6,18 @@
   <meta name="keywords" content>
   <meta name="description" content="Opencv常用code | 逆水行舟">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="Recap and cheat sheet ## List Docker CLI commands docker docker container --help  ## Display Docker version and info docker --version docker version docker info  ## Execute Docker image docker run hel">
-<meta name="keywords" content="Dock-File">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Dockfile Knowledge">
-<meta property="og:url" content="http://yoursite.com/2019/10/18/Dockfile-Knowledge/index.html">
+<meta name="description" content="个人简介宁述亮 本科毕业于香港中文大学（深圳），计算机科学与技术专业 目前是香港中文大学（深圳）的一名博士生，从事视频预测、图像生成方面的研究。 最近Nothing！ 联系方式·邮箱： shuliangning@link.cuhk.edu.cn">
+<meta name="keywords" content="Machine Learning, Computer Science">
+<meta property="og:type" content="website">
+<meta property="og:title" content="关于&amp;留言板">
+<meta property="og:url" content="http://yoursite.com/about/index.html">
 <meta property="og:site_name" content="逆水行舟">
-<meta property="og:description" content="Recap and cheat sheet ## List Docker CLI commands docker docker container --help  ## Display Docker version and info docker --version docker version docker info  ## Execute Docker image docker run hel">
+<meta property="og:description" content="个人简介宁述亮 本科毕业于香港中文大学（深圳），计算机科学与技术专业 目前是香港中文大学（深圳）的一名博士生，从事视频预测、图像生成方面的研究。 最近Nothing！ 联系方式·邮箱： shuliangning@link.cuhk.edu.cn">
 <meta property="og:locale" content="Python, C++">
-<meta property="og:updated_time" content="2019-10-18T02:23:58.656Z">
+<meta property="og:updated_time" content="2019-11-05T12:13:28.835Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Dockfile Knowledge">
-<meta name="twitter:description" content="Recap and cheat sheet ## List Docker CLI commands docker docker container --help  ## Display Docker version and info docker --version docker version docker info  ## Execute Docker image docker run hel">
+<meta name="twitter:title" content="关于&amp;留言板">
+<meta name="twitter:description" content="个人简介宁述亮 本科毕业于香港中文大学（深圳），计算机科学与技术专业 目前是香港中文大学（深圳）的一名博士生，从事视频预测、图像生成方面的研究。 最近Nothing！ 联系方式·邮箱： shuliangning@link.cuhk.edu.cn">
 
 
 <link rel="icon" href="/img/avatar.jpg">
@@ -48,7 +48,7 @@
 </head>
 <div style="display: none">
   <input class="theme_disqus_on" value="false">
-  <input class="theme_preload_comment" value="true">
+  <input class="theme_preload_comment" value="false">
   <input class="theme_blog_path" value>
 </div>
 
@@ -108,6 +108,8 @@
 
 
 
+<a class="more-menus">更多菜单</a>
+
 
 <ul>
     <li><div class="all active">全部文章<small>(6)</small></div></li>
@@ -118,6 +120,8 @@
     
     
     
+    
+    <a class="dynamic-menu " target="_blank"  href="https://github.com/ningshuliang">github</a>
     
     </div>
     <div><a class="about  hasFriend  site_url"  href="/about">关于</a><a style="width: 50%"  class="friends">友链</a></div>
@@ -146,7 +150,7 @@
 </div>
         <div class="title-list">
     <form onkeydown="if(event.keyCode==13){return false;}">
-        <input class="search" type="text" placeholder="Search..." autocomplete="off"id="local-search-input" >
+        <input class="search" type="text" placeholder="以 in: 开头进行全文搜索" autocomplete="off"id="local-search-input" >
         <i class="cross"></i>
         <span>
             <label for="tagswitch">Tags:</label>
@@ -171,6 +175,10 @@
     <div class="clearfix"></div>
 </div>
 
+    
+    <div id="local-search-result">
+
+    </div>
     
     <nav id="title-list-nav">
         
@@ -199,19 +207,19 @@
         </a>
         
         <a  class=""
-           href="/2019/06/22/Opencv_code/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="Opencv常用code">Opencv常用code</span>
-            <span class="post-date" title="2019-06-22 21:36:24">2019/06/22</span>
-        </a>
-        
-        <a  class=""
            href="/2019/06/28/气象数据预处理/"
            data-tag=""
            data-author="" >
             <span class="post-title" title="气象数据预处理">气象数据预处理</span>
             <span class="post-date" title="2019-06-28 17:16:13">2019/06/28</span>
+        </a>
+        
+        <a  class=""
+           href="/2019/06/22/Opencv_code/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Opencv常用code">Opencv常用code</span>
+            <span class="post-date" title="2019-06-22 21:36:24">2019/06/22</span>
         </a>
         
         <a  class=""
@@ -315,18 +323,6 @@ cv2.imwrite(path+&quot;/&quot;+files[i],img)</code></pre>
 </p>
 
 
-<div class="article_copyright">
-    <p><span class="copy-title">文章标题:</span>Opencv常用code</p>
-    <p><span class="copy-title">文章字数:</span><span class="post-count">48</span></p>
-    <p><span class="copy-title">本文作者:</span><a href="javascript:void(0)" title="Allen Ning">Allen Ning</a></p>
-    <p><span class="copy-title">发布时间:</span>2019-06-22, 21:36:24</p>
-    <p><span class="copy-title">最后更新:</span>2019-09-27, 10:07:19</p>
-    <span class="copy-title">原始链接:</span><a class="post-url" href="/2019/06/22/Opencv_code/" title="Opencv常用code">http://yoursite.com/2019/06/22/Opencv_code/</a>
-    <p>
-        <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
-    </p>
-</div>
-
 
 
     <div id="comments"></div>
@@ -359,7 +355,7 @@ cv2.imwrite(path+&quot;/&quot;+files[i],img)</code></pre>
 
     </div>
     <div class="copyright">
-        <p class="footer-entry">©2016-2019 Yelog</p>
+        <p class="footer-entry">©2017 Allen Ning</p>
 <p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
 
     </div>
@@ -622,6 +618,18 @@ cv2.imwrite(path+&quot;/&quot;+files[i],img)</code></pre>
 
 
 
+
+<div class="mobile-menus-out" >
+
+</div>
+<div class="mobile-menus">
+    
+    
+    
+    
+    <a class="dynamic-menu " target="_blank"  href="https://github.com/ningshuliang">github</a>
+    
+</div>
 
 
 </html>
