@@ -11,6 +11,12 @@
         <content type="html"><![CDATA[<p>Recap and cheat sheet</p><pre><code class="shell">## List Docker CLI commandsdockerdocker container --help## Display Docker version and infodocker --versiondocker versiondocker info## Execute Docker imagedocker run hello-world## List Docker imagesdocker image ls## List Docker containers (running, all, all in quiet mode)docker container lsdocker container ls --alldocker container ls -aq</code></pre>]]></content>
       
       
+      <categories>
+          
+          <category> Linux </category>
+          
+      </categories>
+      
       
         <tags>
             
@@ -39,7 +45,7 @@
       
         <tags>
             
-            <tag> 气象数据预处理 </tag>
+            <tag> 气象 </tag>
             
         </tags>
       
@@ -55,6 +61,18 @@
         <content type="html"><![CDATA[<h5 id="去掉前缀"><a href="#去掉前缀" class="headerlink" title="去掉前缀"></a>去掉前缀</h5><pre><code class="python">import numpy as npimport osimport shutilimport sysfiles=os.listdir(&#39;First&#39;)index=0for file in files:    index+=1    print(index)    os.rename(&#39;First/&#39;+file,&#39;First/&#39;+file[10:])</code></pre><h5 id="去除无用数据"><a href="#去除无用数据" class="headerlink" title="去除无用数据"></a>去除无用数据</h5><pre><code class="python">import numpy as npimport osimport shutilimport sysfiles=os.listdir(&#39;First&#39;)newfile=sorted(files, key=lambda x: x[:12])filelist=[]total=len(newfile)print(total)index=0while index &lt; total:    print(index)    if index==total-1:        filelist.append(newfile[index])        index+=1    else:        first=newfile[index][:12]        second=newfile[index+1][:12]        if first==second:            index11=newfile[index].find(&#39;2500_&#39;)            index12=newfile[index].find(&#39;.ref&#39;)            index21=newfile[index+1].find(&#39;2500_&#39;)            index22=newfile[index+1].find(&#39;.ref&#39;)            number1=int(newfile[index][index11+5:index12])            number2=int(newfile[index+1][index21+5:index22])            if number1&lt;number2:                filelist.append(newfile[index+1])            else:                filelist.append(newfile[index])            index+=2        else:            filelist.append(newfile[index])            index+=1if not os.path.exists(&#39;Second&#39;):    os.makedirs(&#39;Second&#39;)for i in filelist:    os.rename(&#39;First/&#39;+i,&#39;First/&#39;+i[:12]+&#39;.ref&#39;)    try:        shutil.move(&#39;First/&#39;+i[:12]+&#39;.ref&#39;,&quot;Second/&quot;)    except:        print(&#39;Here&#39;)print(&#39;Done!&#39;)</code></pre><h5 id="生成图片"><a href="#生成图片" class="headerlink" title="生成图片"></a>生成图片</h5><pre><code class="python">import  numpy as npimport osimport cv2import sysif not os.path.exists(&#39;Third&#39;):    os.makedirs(&#39;Third&#39;)index=0files=os.listdir(&#39;Second&#39;)for file in files:    index+=1    print(index)    png = np.fromfile(&#39;Second/&#39;+file, dtype=np.uint8).reshape(700, 900)    resize_png=png[100:601,200:701]    mask=(resize_png==125)    resize_png=255*mask+(1-mask)*resize_png    start=0    end=file.find(&#39;.ref&#39;)    cv2.imwrite(&#39;Third/&#39;+file[start:end]+&#39;.png&#39;,resize_png)</code></pre><h5 id="分组"><a href="#分组" class="headerlink" title="分组"></a>分组</h5><pre><code class="python">import  numpy as npimport osimport cv2import shutilif not os.path.exists(&#39;Dataset&#39;):        os.makedirs(&#39;Dataset&#39;)files=os.listdir(&#39;Third&#39;)print(len(files))images=sorted(files, key=lambda x: x[:12])fileindex=0for i in range(476):    print(i)    os.mkdir(&#39;Dataset/&#39;+str(fileinludex))    for j in range(15*i,15*i+61):        shutil.copy(&#39;Third/&#39;+images[j],&#39;Dataset/&#39;+str(fileindex))    fileindex+=1</code></pre><h5 id="重命名"><a href="#重命名" class="headerlink" title="重命名"></a>重命名</h5><pre><code class="python">import  numpy as npimport osimport cv2import shutilpath=&#39;Dataset&#39;files=os.listdir(path)for i in range(len(files)):    subfiles=os.listdir(path+&#39;/&#39;+files[i])    resort=sorted(subfiles, key=lambda x: x[:12])    for j in range(len(resort)):        os.rename(path+&#39;/&#39;+files[i]+&#39;/&#39;+resort[j],path+&#39;/&#39;+files[i]+&#39;/&#39;+str(j).zfill(2)+&#39;.png&#39;)</code></pre><h5 id="去掉前缀-1"><a href="#去掉前缀-1" class="headerlink" title="去掉前缀"></a>去掉前缀</h5><pre><code class="python">import numpy as npimport osimport shutilimport sysfiles=os.listdir(&#39;First&#39;)index=0for file in files:    index+=1    print(index)    os.rename(&#39;First/&#39;+file,&#39;First/&#39;+file[10:])</code></pre><h5 id="翻倍生成"><a href="#翻倍生成" class="headerlink" title="翻倍生成"></a>翻倍生成</h5><pre><code class="python">import  numpy as npimport osimport cv2import shutilpath=&#39;Dataset&#39;files=os.listdir(path)#os.remove(&#39;Dataset/.DS_Store&#39;)dirs=sorted(files, key=lambda x: int(x))for i in range(1192):    shutil.copytree(path+&#39;/&#39;+str(i),path+&#39;/&#39;+str(i+3808))</code></pre><h5 id="查看像素值"><a href="#查看像素值" class="headerlink" title="查看像素值"></a>查看像素值</h5><pre><code class="python">import matplotlib.pyplot as plt # plt 用于显示图片import matplotlib.image as mpimg # mpimg 用于读取图片import numpy as nplena = mpimg.imread(&#39;Dataset/0/00.png&#39;) # 读取和代码处于同一目录下的 lena.png# 此时 lena 就已经是一个 np.array 了，可以对它进行任意处理lena.shape #(512, 512, 3)plt.imshow(lena) # 显示图片plt.axis(&#39;off&#39;) # 不显示坐标轴plt.show()</code></pre><h5 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h5><p>700✖️900 转换为501✖️501，做edge map</p><h5 id="Main-函数文件"><a href="#Main-函数文件" class="headerlink" title="Main 函数文件"></a>Main 函数文件</h5><ol><li>同一个np.random.seed() 下产生的随机数相同</li></ol><h5 id="Mxnet"><a href="#Mxnet" class="headerlink" title="Mxnet"></a>Mxnet</h5><pre><code>mx.nd.reshape([-1,0])-1 表示 重新计算所在维度0  表示 所在维度不变换</code></pre><h5 id="Np-clip"><a href="#Np-clip" class="headerlink" title="Np.clip()"></a>Np.clip()</h5><pre><code>截取两端，超出的部分强制为边界。</code></pre><h5 id="刚上来maxpooling-到167-167"><a href="#刚上来maxpooling-到167-167" class="headerlink" title="刚上来maxpooling 到167*167"></a>刚上来maxpooling 到167*167</h5>]]></content>
       
       
+      <categories>
+          
+          <category> 气象 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 气象 </tag>
+            
+        </tags>
       
     </entry>
     
@@ -68,6 +86,12 @@
         <content type="html"><![CDATA[<h5 id="改变大小"><a href="#改变大小" class="headerlink" title="改变大小"></a>改变大小</h5><pre><code class="python">import cv2img=cv2.resize(img,(320,320),interpolation=cv2.INTER_LINEAR)img=cv2.resize(img,(320,320),interpolation=cv2.INTER_NEAREST)</code></pre><h5 id="读写"><a href="#读写" class="headerlink" title="读写"></a>读写</h5><pre><code class="python">img=cv2.imread(path+&quot;/&quot;+files[i])cv2.imwrite(path+&quot;/&quot;+files[i],img)</code></pre><h5 id="查看形状"><a href="#查看形状" class="headerlink" title="查看形状"></a>查看形状</h5><pre><code class="python">image.shape</code></pre>]]></content>
       
       
+      <categories>
+          
+          <category> python </category>
+          
+      </categories>
+      
       
     </entry>
     
@@ -80,6 +104,12 @@
       
         <content type="html"><![CDATA[<h5 id="linux-显示文件数目"><a href="#linux-显示文件数目" class="headerlink" title="linux 显示文件数目"></a>linux 显示文件数目</h5><pre><code class="linux">ls |wc -l</code></pre><h5 id="解压打包文件夹"><a href="#解压打包文件夹" class="headerlink" title="解压打包文件夹"></a>解压打包文件夹</h5><pre><code class="bash">解包：tar zxvf FileName.tar打包：tar czvf FileName.tar DirName</code></pre><h5 id="github-板块"><a href="#github-板块" class="headerlink" title="github 板块"></a>github 板块</h5><pre><code>git add .git commit -m &#39;messgae&#39;git push</code></pre><h5 id="hexo-板块"><a href="#hexo-板块" class="headerlink" title="hexo 板块"></a>hexo 板块</h5><pre><code>hexo cleanhexo ghexo d</code></pre><h5 id="管理员必备"><a href="#管理员必备" class="headerlink" title="管理员必备"></a>管理员必备</h5><h5 id="如何查看Linux中各个用户使用的存储空间大小："><a href="#如何查看Linux中各个用户使用的存储空间大小：" class="headerlink" title="如何查看Linux中各个用户使用的存储空间大小："></a>如何查看Linux中各个用户使用的存储空间大小：</h5><pre><code>sudo du -sh /home/*df -h</code></pre><h5 id="开放端口"><a href="#开放端口" class="headerlink" title="开放端口"></a>开放端口</h5><p><img src="https://tva1.sinaimg.cn/large/006y8mN6gy1g6ioy565knj30jw0dzmxz.jpg" alt></p><h5 id="Scp-传输"><a href="#Scp-传输" class="headerlink" title="Scp 传输"></a>Scp 传输</h5><pre><code>scp -P 20711 -r /data3/shuliang/source_code/szo_data shuliang@180.168.160.138:/home/shuliang</code></pre><h5 id="Anaconda-安装使用"><a href="#Anaconda-安装使用" class="headerlink" title="Anaconda 安装使用"></a>Anaconda 安装使用</h5><pre><code class="bash"># Install condaRUN curl -o ~/miniconda.sh -O  https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh  &amp;&amp;\    chmod +x ~/miniconda.sh &amp;&amp;\    ~/miniconda.sh -b -p /opt/conda &amp;&amp;\    rm ~/miniconda.sh &amp;&amp;\    /opt/conda/bin/conda install numpy pyyaml scipy ipython mkl mkl-include &amp;&amp;\    /opt/conda/bin/conda clean -yaENV PATH /opt/conda/bin:$PATH# Conda environmentRUN conda create -n habitat python=3.6</code></pre><h5 id="查看cuda版本"><a href="#查看cuda版本" class="headerlink" title="查看cuda版本"></a>查看cuda版本</h5><pre><code>cat /usr/local/cuda/version.txtcat /usr/local/cuda/include/cudnn.h | grep CUDNN_MAJOR -A 2</code></pre><h5 id="FTP-下载文件"><a href="#FTP-下载文件" class="headerlink" title="FTP 下载文件"></a>FTP 下载文件</h5><pre><code>wget ftp://121.15.170.100  --ftp-user=gzw --ftp-password=gzw@20190520 -r</code></pre><h5 id="CUDA-安装教程"><a href="#CUDA-安装教程" class="headerlink" title="CUDA 安装教程"></a>CUDA 安装教程</h5><pre><code class="shell">$  wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/cuda-ubuntu1804.pin$  sudo mv cuda-ubuntu1804.pin /etc/apt/preferences.d/cuda-repository-pin-600$  sudo apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/7fa2af80.pub$  sudo add-apt-repository &quot;deb http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/ /&quot;$  sudo apt-get update$  sudo apt-get -y install cuda</code></pre>]]></content>
       
+      
+      <categories>
+          
+          <category> Linux </category>
+          
+      </categories>
       
       
         <tags>
