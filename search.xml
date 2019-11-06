@@ -4,31 +4,6 @@
   
     
     <entry>
-      <title>Dockfile Knowledge</title>
-      <link href="/2019/10/18/Dockfile-Knowledge/"/>
-      <url>/2019/10/18/Dockfile-Knowledge/</url>
-      
-        <content type="html"><![CDATA[<p>Recap and cheat sheet</p><pre><code class="shell">## List Docker CLI commandsdockerdocker container --help## Display Docker version and infodocker --versiondocker versiondocker info## Execute Docker imagedocker run hello-world## List Docker imagesdocker image ls## List Docker containers (running, all, all in quiet mode)docker container lsdocker container ls --alldocker container ls -aq</code></pre>]]></content>
-      
-      
-      <categories>
-          
-          <category> Linux </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> Dock-File </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>气象数据处理</title>
       <link href="/2019/10/18/%E6%B0%94%E8%B1%A1%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86/"/>
       <url>/2019/10/18/%E6%B0%94%E8%B1%A1%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86/</url>
