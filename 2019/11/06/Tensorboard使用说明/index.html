@@ -2,9 +2,9 @@
 <html>
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
-  <title>逆水行舟</title>
-  <meta name="keywords" content>
-  <meta name="description" content="逆水行舟">
+  <title>Tensorboard使用说明 | 逆水行舟</title>
+  <meta name="keywords" content=" Tensorboard ">
+  <meta name="description" content="Tensorboard使用说明 | 逆水行舟">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="个人简介宁述亮 本科毕业于香港中文大学（深圳），计算机科学与技术专业 目前是香港中文大学（深圳）的一名博士生，从事视频预测、图像生成方面的研究。 最近Nothing！ 联系方式·邮箱： shuliangning@link.cuhk.edu.cn">
 <meta name="keywords" content="Machine Learning, Computer Science">
@@ -53,7 +53,7 @@
 </div>
 
 <body>
-<aside class="nav mobile">
+<aside class="nav">
     <div class="nav-left">
         <a href="/" class="avatar_target">
     <img class="avatar" src="/img/avatar.jpg" />
@@ -268,12 +268,68 @@
         </div>
     </div>
 </aside>
-<div class="post index">
+<div class="post">
     <div class="pjax">
-        <article class="index">
-            <div class="toc-ref">
+        <article id="post-Tensorboard使用说明" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#关于星陨阁"><span class="toc-text">关于星陨阁</span></a></li></ol>
+        <h1 class="article-title">Tensorboard使用说明</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            
+                <a href="javascript:" data-rel="Linux">Linux</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="javascript:" class="color2">Tensorboard</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+        创建时间:<time class="date" title='更新时间: 2019-12-13 19:31:31'>2019-11-06 10:02</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        <span>字数:36</span>
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读:<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+        <span class="top-comment" title="跳转至评论区">
+            <a href="#comments">
+                评论:<span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </a>
+        </span>
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        
     
 <style>
     .left-col .switch-btn,
@@ -286,16 +342,29 @@
     }
 </style>
 </div>
-            <h2 id="关于星陨阁"><a href="#关于星陨阁" class="headerlink" title="关于星陨阁"></a>关于星陨阁</h2><p><strong>星陨阁</strong> 是宁述亮的个人网站。</p>
-<p>到目前为止已经写了<code class="article_number"></code>篇文章， 共<code class="site_word_count"></code>字。</p>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <pre><code>登录服务器：
+ssh -L 16006:127.0.0.1:6006 xxx@IP
 
-        </article>
-        
-        <p>
-            <a href="javascript:void(0)" class="dashang" onclick="dashangToggle()">赏</a>
-        </p>
-        
-        
+启动Tensorboard：
+tensorboard --logdir=/path/to/saved_model
+
+浏览器打开网址：http://127.0.0.1:16006/</code></pre>
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 shuliangning@link.cuhk.edu.cn </span>
+    </div>
+</article>
+
+
+<p>
+    <a href="javascript:void(0)" class="dashang" onclick="dashangToggle()">赏</a>
+</p>
+
+
+
+
     <div id="comments"></div>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
 
@@ -315,6 +384,13 @@
         gitalk.render('comments')
     })
 </script>
+
+
+
+
+    
+
+
 
 
     </div>
