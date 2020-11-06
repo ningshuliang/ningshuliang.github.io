@@ -2,6 +2,106 @@
 <search> 
   
   
+    
+    <entry>
+      <title>Pytorch-网络搭建技巧</title>
+      <link href="/2020/11/06/Pytorch-%E7%BD%91%E7%BB%9C%E6%90%AD%E5%BB%BA%E6%8A%80%E5%B7%A7/"/>
+      <url>/2020/11/06/Pytorch-%E7%BD%91%E7%BB%9C%E6%90%AD%E5%BB%BA%E6%8A%80%E5%B7%A7/</url>
+      
+        <content type="html"><![CDATA[<h5 id="冻结某些层参数的例子"><a href="#冻结某些层参数的例子" class="headerlink" title="冻结某些层参数的例子"></a>冻结某些层参数的例子</h5><pre><code class="python">######### 模型定义 #########class MyModel(nn.Module):    def __init__(self, feat_dim):   # input the dim of output fea-map of Resnet:        super(MyModel, self).__init__()        BackBone = models.resnet50(pretrained=True)        add_block = []        add_block += [nn.Linear(2048, 512)]        add_block += [nn.LeakyReLU(inplace=True)]        add_block = nn.Sequential(*add_block)        add_block.apply(weights_init_xavier)        self.BackBone = BackBone        self.add_block = add_block    def forward(self, input):   # input is 2048!        x = self.BackBone(input)        x = self.add_block(x)        return x############################### 模型准备model = MyModel()# 优化、正则项、权重设置与冻结层for param in model.parameters():    param.requires_grad = Falsefor param in model.add_block.parameters():    param.requires_grad = Trueoptimizer = optim.SGD(            filter(lambda p: p.requires_grad, model.parameters()),  # 记住一定要加上filter()，不然会报错            lr=0.01,            weight_decay=1e-5, momentum=0.9, nesterov=True)ignored_params = list(map(id, model.add_block.parameters()))base_params = filter(lambda p: id(p) not in ignored_params, model.parameters()</code></pre><h5 id="加载预训练模型"><a href="#加载预训练模型" class="headerlink" title="加载预训练模型"></a>加载预训练模型</h5><pre><code class="python">model.load_state_dict(torch.load(args.model_path))</code></pre><h5 id="保存训练模型"><a href="#保存训练模型" class="headerlink" title="保存训练模型"></a>保存训练模型</h5><pre><code class="python">torch.save(model.state_dict(), save_path)</code></pre><h5 id="不同的层设置不同的学习率"><a href="#不同的层设置不同的学习率" class="headerlink" title="不同的层设置不同的学习率"></a>不同的层设置不同的学习率</h5><pre><code class="python">net = net()lr=0.001conv5_params = list (map(id, net.conv5.parameters()))base_params = filter (lambda p: id(p) not in conv5_params,net.parameters())optimizer = torch. optim.SGD([           {&#39;params&#39;: base_params},           {&#39;params&#39;: net.conv5.parameters(),&#39;lr&#39;:lr*100},           lr=lr,           momentum=0.9])</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> Python </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Pytorch </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Opencv-常用Code</title>
+      <link href="/2020/11/06/Opencv-%E5%B8%B8%E7%94%A8Code/"/>
+      <url>/2020/11/06/Opencv-%E5%B8%B8%E7%94%A8Code/</url>
+      
+        <content type="html"><![CDATA[<h5 id="改变图片大小"><a href="#改变图片大小" class="headerlink" title="改变图片大小"></a>改变图片大小</h5><pre><code class="python">import cv2img=cv2.resize(img,(320,320),interpolation=cv2.INTER_LINEAR)img=cv2.resize(img,(320,320),interpolation=cv2.INTER_NEAREST)</code></pre><h5 id="读写"><a href="#读写" class="headerlink" title="读写"></a>读写</h5><pre><code class="python">img=cv2.imread(path+&quot;/&quot;+files[i])cv2.imwrite(path+&quot;/&quot;+files[i],img)</code></pre><p>##### </p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Python </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Opencv </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Slurm-命令合集</title>
+      <link href="/2020/11/06/Slurm-%E5%91%BD%E4%BB%A4%E5%90%88%E9%9B%86/"/>
+      <url>/2020/11/06/Slurm-%E5%91%BD%E4%BB%A4%E5%90%88%E9%9B%86/</url>
+      
+        <content type="html"><![CDATA[<h5 id="Srun-跑代码"><a href="#Srun-跑代码" class="headerlink" title="Srun 跑代码"></a>Srun 跑代码</h5><pre><code class="bash">srun -p p-V100 --gres=gpu:1  --cpus-per-task=4 -n 1 --ntasks-per-node=1 --job-name=64_B python main.py --model_name MIM</code></pre><h5 id="查看Slurm-占用"><a href="#查看Slurm-占用" class="headerlink" title="查看Slurm 占用"></a>查看Slurm 占用</h5><pre><code class="bash">squeue | grep -i ning</code></pre><h5 id="查看队列"><a href="#查看队列" class="headerlink" title="查看队列"></a>查看队列</h5><pre><code>squeue</code></pre><h5 id="取消任务"><a href="#取消任务" class="headerlink" title="取消任务"></a>取消任务</h5><pre><code>scancel job_id</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> Linux </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Slurm 集群的使用 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Linux-Basic-Operation</title>
+      <link href="/2020/11/06/Linux-Basic-Operation/"/>
+      <url>/2020/11/06/Linux-Basic-Operation/</url>
+      
+        <content type="html"><![CDATA[<center>  Linux 基本操作</center><h5 id="显示文件数目"><a href="#显示文件数目" class="headerlink" title="显示文件数目"></a>显示文件数目</h5><pre><code class="bash">ls |wc -l</code></pre><h5 id="解压打包文件夹"><a href="#解压打包文件夹" class="headerlink" title="解压打包文件夹"></a>解压打包文件夹</h5><pre><code class="bash">解包：tar zxvf FileName.tar打包：tar czvf FileName.tar DirNamezip -r 压缩文件名 目录unzip xxx.zip</code></pre><h5 id="Hexo-应用"><a href="#Hexo-应用" class="headerlink" title="Hexo 应用"></a>Hexo 应用</h5><pre><code class="bash">hexo cleanhexo ghexo d</code></pre><h5 id="查看磁盘和目录使用空间"><a href="#查看磁盘和目录使用空间" class="headerlink" title="查看磁盘和目录使用空间"></a>查看磁盘和目录使用空间</h5><pre><code class="bash">sudo du -sh /home/*df -h</code></pre><h5 id="开放端口"><a href="#开放端口" class="headerlink" title="开放端口"></a>开放端口</h5><pre><code></code></pre><h5 id="SCP-传输-普通"><a href="#SCP-传输-普通" class="headerlink" title="SCP 传输 普通"></a>SCP 传输 普通</h5><pre><code class="bash">scp -P 20711 -r /data3/shuliang/source_code/szo_data shuliang@180.168.160.138:/home/shuliang</code></pre><h5 id="SCP用Private-Key-传输"><a href="#SCP用Private-Key-传输" class="headerlink" title="SCP用Private Key 传输"></a>SCP用Private Key 传输</h5><pre><code class="bash">scp -i /data_set_medical/shuliang_dataset/id_rsa -r   /data_set_medical/shuliang_dataset/KTH_Final/KTH_select/test_kth  shuliang@120.92.73.58:/data/shuliang/KTH_data</code></pre><h5 id="查看cuda版本"><a href="#查看cuda版本" class="headerlink" title="查看cuda版本"></a>查看cuda版本</h5><pre><code class="bash">cat /usr/local/cuda/version.txtcat /usr/local/cuda/include/cudnn.h | grep CUDNN_MAJOR -A 2</code></pre><h5 id="FTP-下载文件"><a href="#FTP-下载文件" class="headerlink" title="FTP 下载文件"></a>FTP 下载文件</h5><pre><code>wget ftp://121.15.170.100  --ftp-user=gzw --ftp-password=gzw@20190520 -r</code></pre><h4 id="Pip-换源"><a href="#Pip-换源" class="headerlink" title="Pip 换源"></a>Pip 换源</h4><pre><code>pip install scrapy -i https://pypi.tuna.tsinghua.edu.cn/simple</code></pre><h4 id="查看端口进程"><a href="#查看端口进程" class="headerlink" title="查看端口进程"></a>查看端口进程</h4><pre><code>lsof -i : 端口号</code></pre><h4 id="开放端口-1"><a href="#开放端口-1" class="headerlink" title="开放端口"></a>开放端口</h4><pre><code>/sbin/iptables -I INPUT -p tcp --dport 8080 -j ACCEPT</code></pre><h5 id="Linux-查看显卡全部进程"><a href="#Linux-查看显卡全部进程" class="headerlink" title="Linux 查看显卡全部进程"></a>Linux 查看显卡全部进程</h5><pre><code>sudo fuser -v /dev/nvidia*</code></pre><h5 id="添加豆瓣源"><a href="#添加豆瓣源" class="headerlink" title="添加豆瓣源"></a>添加豆瓣源</h5><pre><code>-i http://pypi.douban.com/simple/ --trusted-host pypi.douban.com</code></pre><h5 id="Tensorboard-使用"><a href="#Tensorboard-使用" class="headerlink" title="Tensorboard 使用"></a>Tensorboard 使用</h5><pre><code>启动Tensorboard：tensorboard --logdir= path --bind_all浏览器打开网址：http://127.0.0.1:16006/</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> Linux Code </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Linux </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
   
   
 </search>
