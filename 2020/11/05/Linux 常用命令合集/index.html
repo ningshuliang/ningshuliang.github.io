@@ -2,9 +2,9 @@
 <html>
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
-  <title>Docker | 逆水行舟</title>
-  <meta name="keywords" content=" Docker ">
-  <meta name="description" content="Docker | 逆水行舟">
+  <title>逆水行舟</title>
+  <meta name="keywords" content>
+  <meta name="description" content="逆水行舟">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="个人简介宁述亮 本科毕业于香港中文大学（深圳），计算机科学与技术专业 目前是香港中文大学（深圳）的一名博士生，从事视频预测、图像生成方面的研究。 最近Nothing！ 联系方式·邮箱： shuliangning@link.cuhk.edu.cn">
 <meta name="keywords" content="Machine Learning, Computer Science">
@@ -278,36 +278,22 @@
 </aside>
 <div class="post">
     <div class="pjax">
-        <article id="post-Docker" class="article article-type-post" itemscope itemprop="blogPost">
-    
-        <h1 class="article-title">Docker</h1>
+        <article id="post-Linux 常用命令合集" class="article article-type-post" itemscope itemprop="blogPost">
     
     <div class="article-meta">
         
         
         
-        <span class="book">
-            
-                <a href="javascript:" data-rel="Linux">Linux</a>
-            
-        </span>
-        
-        
-        <span class="tag">
-            
-            <a href="javascript:" class="color2">Docker</a>
-            
-        </span>
         
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title='更新时间: 2020-01-07 22:09:57'>2020-01-07 20:35</time>
+        创建时间:<time class="date" title='更新时间: 2020-11-06 15:14:27'>2020-11-05 13:59</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:40</span>
+        <span>字数:227</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -337,7 +323,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#查看版本"><span class="toc-text">查看版本</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#查看image"><span class="toc-text">查看image</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#拉取docker镜像"><span class="toc-text">拉取docker镜像</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#查看当前有哪些容器正在运行"><span class="toc-text">查看当前有哪些容器正在运行</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#查看所有容器"><span class="toc-text">查看所有容器</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Linux-常用命令合集"><span class="toc-text">Linux 常用命令合集</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#For-MIM"><span class="toc-text">For MIM</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#For-ConvLSTM"><span class="toc-text">For ConvLSTM</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#For-Predrnn-plus"><span class="toc-text">For Predrnn_plus</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查看Slurm-占用"><span class="toc-text">查看Slurm 占用</span></a></li></ol></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -353,11 +339,36 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <center>
-  Docker 教程
-</center>
+        <h1 id="Linux-常用命令合集"><a href="#Linux-常用命令合集" class="headerlink" title="Linux 常用命令合集"></a>Linux 常用命令合集</h1><h3 id="For-MIM"><a href="#For-MIM" class="headerlink" title="For MIM"></a>For MIM</h3><pre><code class="bash">srun -p p-V100 --gres=gpu:1  --cpus-per-task=4 -n 1 --ntasks-per-node=1 --job-name=64_B python main.py --model_name MIM
 
-<h5 id="查看版本"><a href="#查看版本" class="headerlink" title="查看版本"></a>查看版本</h5><pre><code>docker version</code></pre><h5 id="查看image"><a href="#查看image" class="headerlink" title="查看image"></a>查看image</h5><pre><code>docker images</code></pre><h5 id="拉取docker镜像"><a href="#拉取docker镜像" class="headerlink" title="拉取docker镜像"></a>拉取docker镜像</h5><pre><code>docker pull image_name</code></pre><h5 id="查看当前有哪些容器正在运行"><a href="#查看当前有哪些容器正在运行" class="headerlink" title="查看当前有哪些容器正在运行"></a>查看当前有哪些容器正在运行</h5><pre><code>docker ps</code></pre><h5 id="查看所有容器"><a href="#查看所有容器" class="headerlink" title="查看所有容器"></a>查看所有容器</h5><pre><code>docker ps -a</code></pre>
+srun -p p-RTX2080 --gres=gpu:1  --cpus-per-task=4 -n 1 --ntasks-per-node=1 --job-name=64_B python main.py --model_name MIM</code></pre>
+<h3 id="For-ConvLSTM"><a href="#For-ConvLSTM" class="headerlink" title="For ConvLSTM"></a>For ConvLSTM</h3><pre><code class="bash">srun -p p-V100 --gres=gpu:1  --cpus-per-task=4 -n 1 --ntasks-per-node=1 --job-name=LSTM_W_M --nodelist=pgpu10 python main.py --model_name ConvLSTM</code></pre>
+<h3 id="For-Predrnn-plus"><a href="#For-Predrnn-plus" class="headerlink" title="For Predrnn_plus"></a>For Predrnn_plus</h3><pre><code class="bash">srun -p p-V100 --gres=gpu:1  --cpus-per-task=4 -n 1 --ntasks-per-node=1 --job-name=plus_W_M --nodelist=pgpu10 python main.py --model_name Predrnn_plus</code></pre>
+<h3 id="查看Slurm-占用"><a href="#查看Slurm-占用" class="headerlink" title="查看Slurm 占用"></a>查看Slurm 占用</h3><pre><code class="bash">squeue | grep -i ning</code></pre>
+<p>srun -p p-RTX2080 –gres=gpu:1  –cpus-per-task=4 -n 1 –ntasks-per-node=1 –job-name=MtoM python run.py</p>
+<p>mask -&gt; mask </p>
+<p>base line  输入 学 mask</p>
+<p>resize  64</p>
+<table>
+<thead>
+<tr>
+<th>实验</th>
+<th>描述</th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>MIM Baseline 跑完 做一组test集  用来做 mask 网络 img-&gt;mask  （10-1 ）的训练集训练mask</td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td>mask mask 网路图片预训练，网络 预测出来的转binary， 用于  mask-mask 网络的继续训练，结果再concat  比较结果</td>
+<td></td>
+</tr>
+</tbody></table>
+
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 shuliangning@link.cuhk.edu.cn </span>
     </div>
