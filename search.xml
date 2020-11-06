@@ -4,13 +4,25 @@
   
     
     <entry>
-      <title></title>
-      <link href="/2020/11/05/Linux%20%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%90%88%E9%9B%86/"/>
-      <url>/2020/11/05/Linux%20%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%90%88%E9%9B%86/</url>
+      <title>Linux 常用命令合集1</title>
+      <link href="/2020/11/06/Linux-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%90%88%E9%9B%86/"/>
+      <url>/2020/11/06/Linux-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%90%88%E9%9B%86/</url>
       
-        <content type="html"><![CDATA[<h1 id="Linux-常用命令合集"><a href="#Linux-常用命令合集" class="headerlink" title="Linux 常用命令合集"></a>Linux 常用命令合集</h1><h3 id="For-MIM"><a href="#For-MIM" class="headerlink" title="For MIM"></a>For MIM</h3><pre><code class="bash">srun -p p-V100 --gres=gpu:1  --cpus-per-task=4 -n 1 --ntasks-per-node=1 --job-name=64_B python main.py --model_name MIMsrun -p p-RTX2080 --gres=gpu:1  --cpus-per-task=4 -n 1 --ntasks-per-node=1 --job-name=64_B python main.py --model_name MIM</code></pre><h3 id="For-ConvLSTM"><a href="#For-ConvLSTM" class="headerlink" title="For ConvLSTM"></a>For ConvLSTM</h3><pre><code class="bash">srun -p p-V100 --gres=gpu:1  --cpus-per-task=4 -n 1 --ntasks-per-node=1 --job-name=LSTM_W_M --nodelist=pgpu10 python main.py --model_name ConvLSTM</code></pre><h3 id="For-Predrnn-plus"><a href="#For-Predrnn-plus" class="headerlink" title="For Predrnn_plus"></a>For Predrnn_plus</h3><pre><code class="bash">srun -p p-V100 --gres=gpu:1  --cpus-per-task=4 -n 1 --ntasks-per-node=1 --job-name=plus_W_M --nodelist=pgpu10 python main.py --model_name Predrnn_plus</code></pre><h3 id="查看Slurm-占用"><a href="#查看Slurm-占用" class="headerlink" title="查看Slurm 占用"></a>查看Slurm 占用</h3><pre><code class="bash">squeue | grep -i ning</code></pre><p>srun -p p-RTX2080 –gres=gpu:1  –cpus-per-task=4 -n 1 –ntasks-per-node=1 –job-name=MtoM python run.py</p><p>mask -&gt; mask </p><p>base line  输入 学 mask</p><p>resize  64</p><table><thead><tr><th>实验</th><th>描述</th><th></th></tr></thead><tbody><tr><td>1</td><td>MIM Baseline 跑完 做一组test集  用来做 mask 网络 img-&gt;mask  （10-1 ）的训练集训练mask</td><td></td></tr><tr><td>2</td><td>mask mask 网路图片预训练，网络 预测出来的转binary， 用于  mask-mask 网络的继续训练，结果再concat  比较结果</td><td></td></tr></tbody></table>]]></content>
+        <content type="html"><![CDATA[<h3 id="For-MIM"><a href="#For-MIM" class="headerlink" title="For MIM"></a>For MIM</h3><pre><code class="bash">srun -p p-V100 --gres=gpu:1  --cpus-per-task=4 -n 1 --ntasks-per-node=1 --job-name=64_B python main.py --model_name MIMsrun -p p-RTX2080 --gres=gpu:1  --cpus-per-task=4 -n 1 --ntasks-per-node=1 --job-name=64_B python main.py --model_name MIM</code></pre><h3 id="For-ConvLSTM"><a href="#For-ConvLSTM" class="headerlink" title="For ConvLSTM"></a>For ConvLSTM</h3><pre><code class="bash">srun -p p-V100 --gres=gpu:1  --cpus-per-task=4 -n 1 --ntasks-per-node=1 --job-name=LSTM_W_M --nodelist=pgpu10 python main.py --model_name ConvLSTM</code></pre><h3 id="For-Predrnn-plus"><a href="#For-Predrnn-plus" class="headerlink" title="For Predrnn_plus"></a>For Predrnn_plus</h3><pre><code class="bash">srun -p p-V100 --gres=gpu:1  --cpus-per-task=4 -n 1 --ntasks-per-node=1 --job-name=plus_W_M --nodelist=pgpu10 python main.py --model_name Predrnn_plus</code></pre><h3 id="查看Slurm-占用"><a href="#查看Slurm-占用" class="headerlink" title="查看Slurm 占用"></a>查看Slurm 占用</h3><pre><code class="bash">squeue | grep -i ning</code></pre><p>srun -p p-RTX2080 –gres=gpu:1  –cpus-per-task=4 -n 1 –ntasks-per-node=1 –job-name=MtoM python run.py</p><p>mask -&gt; mask </p><p>base line  输入 学 mask</p><p>resize  64</p><table><thead><tr><th>实验</th><th>描述</th><th></th></tr></thead><tbody><tr><td>1</td><td>MIM Baseline 跑完 做一组test集  用来做 mask 网络 img-&gt;mask  （10-1 ）的训练集训练mask</td><td></td></tr><tr><td>2</td><td>mask mask 网路图片预训练，网络 预测出来的转binary， 用于  mask-mask 网络的继续训练，结果再concat  比较结果</td><td></td></tr></tbody></table>]]></content>
       
       
+      <categories>
+          
+          <category> Linux </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Slurm 集群 </tag>
+            
+        </tags>
       
     </entry>
     
