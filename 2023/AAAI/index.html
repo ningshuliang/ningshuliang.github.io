@@ -1,0 +1,264 @@
+
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <title>MIMO is all you need</title>
+
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel='icon' href='/icons/icon-bulb-2-512.png' sizes='512x512'>
+
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"> -->
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"> -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.8.0/codemirror.min.css"> -->
+    <link rel="stylesheet" href="css/codemirror.min.css">
+    <link rel="stylesheet" href="css/app.css">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> -->
+    <script src="js/jquery.min.js"></script>
+    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script> -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.8.0/codemirror.min.js"></script> -->
+    <script src="js/codemirror.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.3/clipboard.min.js"></script> -->
+
+    
+    <script src="js/app.js"></script>
+</head>
+
+<body>
+    <div class="container" id="main">
+        <div class="row">
+            <h1 class="col-md-12 text-center">
+                <b>MIMO Is All You Need : A Strong Multi-In-Multi-Out<br> Baseline for Video Prediction <br>
+                <small>
+                    AAAI 2023
+                </small>
+            </h1>
+        </div>
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <ul class="list-inline">
+                    <li>
+                        <a href="https://ningshuliang.github.io/">
+                            Shuliang Ning
+                        </a><sup>1,2,3*</sup>
+                    </li>
+                    <li>
+                            Mengcheng Lan
+                        <sup>3*</sup>
+                    </li>
+                    <li>
+                           Yanran Li<sup>4</sup>
+                    </li><br>
+                    <li>
+                        <a href="https://chaofengc.github.io/">
+                            Chaofeng Chen
+                        </a><sup>3</sup>
+                    </li>
+                    <li>
+                            Qian Chen<sup>5</sup>
+                    </li>
+                    <li>
+                        Xunlai Chen<sup>5,#</sup>
+                    </li>
+
+                    <li>
+                        <a href="https://mypage.cuhk.edu.cn/academics/hanxiaoguang/">
+                            Xiaoguang Han
+                        </a><sup>1,2,3,#</sup>
+                    </li>
+                    <li>
+                        Shuguang Cui<sup>1,2,3</sup>
+                    </li>
+                    <br>
+                    <li>
+                        <small>
+                            <sup>1</sup>FNii, CUHKSZ
+                        </small>
+                    </li>
+                    <li>
+                        <small>
+                            <sup>2</sup>SSE, CUHKSZ
+                        </small>
+                    </li>
+                    <li>
+                        <small><sup>3</sup>Shenzhen Research Institute of Big Data</small>
+                    </li>
+                    <li>
+                        <small><sup>4</sup>The University of Edinburgh</small>
+                    </li>
+                    <li>
+                        <small><sup>5</sup>Shenzhen Meteorological Bureau</small>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+
+
+        <div class="row">
+                <div class="col-md-4 col-md-offset-4 text-center">
+                    <ul class="nav nav-pills nav-justified">
+                        <li>
+                            <a href="https://arxiv.org/abs/2212.04655">
+                            <image src="./icons/paper.png" height="60px">
+                                <h4><strong>Paper</strong></h4>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://youtu.be/0EOegTyiJDU">
+                            <image src="./icons/youtube.png" height="60px">
+                                <h4><strong>Video</strong></h4>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/ningshuliang/MIMO-VP">
+                            <image src="./icons/github.png" height="60px">
+                                <h4><strong>Code</strong></h4>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+        </div>
+
+
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Abstract
+                </h3>
+                <image src="./images/teaser.jpg" class="img-responsive" alt="overview"><br>
+                <p class="text-justify">
+                    The mainstream of the existing approaches for video prediction builds up 
+                    their models based on a Single-In-Single-Out (SISO) architecture, which 
+                    takes the current frame as input to predict the next frame in a recursive 
+                    manner. This way often leads to severe performance degradation when they 
+                    try to extrapolate a longer period of future, thus limiting the practical 
+                    use of the prediction model. Alternatively, a Multi-In-Multi-Out (MIMO) 
+                    architecture that outputs all the future frames at one shot naturally breaks 
+                    the recursive manner and therefore prevents error accumulation. However, 
+                    only a few MIMO models for video prediction are proposed and they only achieve 
+                    inferior performance due to the date. The real strength of the MIMO model in 
+                    this area is not well noticed and is largely under-explored. Motivated by that, 
+                    we conduct a comprehensive investigation in this paper to thoroughly exploit how 
+                    far a simple MIMO architecture can go. Surprisingly, our empirical studies reveal 
+                    that a simple MIMO model can outperform the state-of-the-art work with a large 
+                    margin much more than expected, especially in dealing with long-term error accumulation. 
+                    After exploring a number of ways and designs, we propose a new MIMO architecture based 
+                    on extending the pure Transformer with local spatio-temporal blocks and a new multi-output 
+                    decoder, namely MIMO-VP, to establish a new standard in video prediction. We evaluate our 
+                    model in four highly competitive benchmarks (Moving MNIST, Human3.6M, Weather, KITTI). 
+                    Extensive experiments show that our model wins 1st place on all the benchmarks with remarkable 
+                    performance gains and surpasses the best SISO model in all aspects including efficiency, quantity, 
+                    and quality. A dramatic 26.9\% MSE / 15.9\% MAE error reduction is achieved when predicting 
+                    10 frames on Moving MNIST and Weather datasets respectively. We believe our model can serve 
+                    as a new baseline to facilitate the future research of video prediction tasks. The code will be released.                              
+                </p><br>
+            </div>
+        </div>
+
+
+
+        <!-- <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Video
+                </h3>
+                <div class="text-center">
+                    <div style="position:relative;padding-top:56.25%;">
+                        <iframe src="./media/demo.mp4" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>
+                    </div>
+                </div>
+        </div> -->
+
+        <!-- <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Methodology
+                </h3>
+                <p class="text-justify">
+                    Given a monocular video with Ni frames depicting a moving person {It|t = 1, . . . , Ni}, REC-MV aims to reconstruct high-fidelity and space-time coherent open garment meshes. This is a challenging problem as it requires a
+                    method to simultaneously capture the shape contours, local surface details, and the motion of the garment. Observing that feature curves (e.g., necklines, hemlines) provide critical cues for 
+                    determining the shape contours of garment and implicit signed distance function (SDF) can well represent a detailed closed surface, we propose to first optimize the explicit 3D feature curves and
+                    implicit garment surfaces from the video, and then apply non-rigid clothing template registration to extract the open garment meshes.
+                </p><br>
+                <image src="./images/pipeline.png" class="img-responsive" alt="method"><br>
+                <p class="text-justify">
+                    Our method can be devided into 4 parts:<br>
+                    (a) Starting from a surface template, we initialize the canonical curves by solving Eq. (3), and apply a handle-based deformation to initialize the canonical implicit surface.<br>
+                    (b) Given an i-th frame, canonical curves are deformed to the camera view space to compute the projection loss based on the surface-aware visibility estimation. <br>
+                    (c) Similarly, the canonical surface  is deform to the camera view to compute the photometric loss by differentiable rendering. The curves and surface are jointly optimized to enable a progressive co-evolution.<br>
+                    (d) Last, the open garment meshes can be extracted by template registration in the canonical space.
+                </p><br>
+            </div>
+        </div> -->
+
+
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Qualitative Results
+                </h3>
+                <img src="./images/mnist.png" class="img-responsive" alt="overview",class="center">
+                <img src="./images/weather.png" class="img-responsive" alt="overview",class="center">
+                
+                <h3>
+                    (a) Comparison of MIMO-VP and PhyDNet by predicting 10 future frames conditioned on different length
+                        of input sequence; (b) Frame-wise MSE of MIMO-VP and PhyDNet on Moving MNIST datase
+                </h3>
+                <img src="./images/compare(1).png" class="img-responsive" alt="overview",class="center">
+                
+
+                
+                <h3>
+                    Results of long-term predication on Moving MNIST dataset.
+                </h3>
+                <img src="./images/longterm.png" class="img-responsive" alt="overview",class="center">
+            
+
+            </div>
+        </div>
+
+            
+        <!-- <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    BibTeX
+                </h3>
+                <div class="form-group col-md-10 col-md-offset-1">
+                    <textarea id="bibtex" class="form-control" readonly>
+@inproceedings{qiu2023REC-MV,
+    title={REC-MV: REconstructing 3D Dynamic Cloth from Monucular Videos},
+    author={Qiu, Lingteng and Chen, Guanying and Zhou, Jiapeng and Xu, Mutian and 
+    Wang, Junle, and Han, Xiaoguang},
+    booktitle={CVPR},
+    year={2023}
+}
+                    </textarea>
+                </div>
+            </div>
+        </div> -->
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Acknowledgements
+                </h3>
+                <p class="text-justify">
+                    <!-- This work was partially supported by the National Key R&D Program of China (No.2018YFB1800800), the Basic Research Project No.~HZQB-KCZYZ-2021067 of Hetao Shenzhen-HK S&T Cooperation Zone, and Hong Kong RGC GRF grant (project# 17203119).
+                    <br> -->
+                    The website template was borrowed from <a href="http://mgharbi.com/">Michaël Gharbi</a>.
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
