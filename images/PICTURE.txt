@@ -1,0 +1,6 @@
+@misc{2312.04534,
+Author = {Shuliang Ning and Duomin Wang and Yipeng Qin and Zirong Jin and Baoyuan Wang and Xiaoguang Han},
+Title = {PICTURE: PhotorealistIC virtual Try-on from UnconstRained dEsigns},
+Year = {2023},
+Eprint = {arXiv:2312.04534},
+}
